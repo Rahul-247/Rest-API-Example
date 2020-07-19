@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Get Method
+      fetch("https://jsonplaceholder.typicode.com/posts/2")
+        .then((response) => response.json())
+        .then((json) => {
+          document.write(
+            "<h1>Get Method Response</h1> <br/><h3> Response Title is: </h3>" +
+              "<h4>" +
+              json.title +
+              "</h4>"
+          );
+          console.log(json);
+        });
+
+      // Post Method
+      fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify({
+          title: "foo",
+          body: "bar",
+          userId: 1,
+        }),
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          document.write(
+            "<br/><br/><h1>Post Method Response</h1> <br/> <h3>Response Title is:</h3> " +
+              "<h4>" +
+              data.title +
+              "</h4>"
+          );
+          console.log(data);
+        });
+    </script>
+  </body>
+</html>
